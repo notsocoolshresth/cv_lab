@@ -1,0 +1,12 @@
+{
+  "svm_rbf_oof_acc": 0.708838821490468,
+  "svm_rbf_oof_f1": 0.7047004889162078,
+  "svm_rbf_alt_oof_acc": 0.7036395147313691,
+  "svm_rbf_alt_oof_f1": 0.6985490293832951,
+  "svm_ensemble_oof_acc": 0.707105719237435,
+  "svm_ensemble_oof_f1": 0.703091091440581,
+  "best_model": "svm_rbf",
+  "best_model_oof_acc": 0.708838821490468,
+  "best_model_oof_f1": 0.7047004889162078,
+  "preprocess_backend": "torch-mps"
+}

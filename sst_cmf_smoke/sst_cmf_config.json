@@ -1,0 +1,21 @@
+{
+  "root": "Kaggle_Prepared",
+  "output_dir": "sst_cmf_smoke",
+  "n_folds": 2,
+  "epochs": 1,
+  "batch_size": 64,
+  "num_workers": 0,
+  "lr": 0.001,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "num_classes": 3,
+  "ce_weight": 0.9,
+  "supcon_weight": 0.1,
+  "mixup_alpha": 0.2,
+  "class_weights": [
+    1.4,
+    1.0,
+    1.0
+  ],
+  "device": "cpu"
+}

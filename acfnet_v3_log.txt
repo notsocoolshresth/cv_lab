@@ -1,0 +1,233 @@
+======================================================================
+STEP 1: Loading data
+======================================================================
+
+Processing training set...
+  Processing 1/600...
+  Processing 50/600...
+  Processing 100/600...
+  Processing 150/600...
+  Processing 200/600...
+  Processing 250/600...
+  Processing 300/600...
+  Processing 350/600...
+  Processing 400/600...
+  Processing 450/600...
+  Processing 500/600...
+  Processing 550/600...
+  Processing 600/600...
+  Skipped 23 black images
+
+Processing validation set...
+  Processing 1/300...
+  Processing 50/300...
+  Processing 100/300...
+  Processing 150/300...
+  Processing 200/300...
+  Processing 250/300...
+  Processing 300/300...
+
+======================================================================
+STEP 2: Preparing features
+======================================================================
+Feature count: 140
+  Health: 191
+  Rust: 200
+  Other: 186
+  Val: 300 samples (11 black)
+
+======================================================================
+STEP 3: Scaling features
+======================================================================
+
+======================================================================
+STEP 4: Two-Stage Classification
+======================================================================
+
+  Stage 1: Health vs Rest
+    Fold 1: Acc=0.7328
+    Fold 2: Acc=0.7241
+    Fold 3: Acc=0.6870
+    Fold 4: Acc=0.7130
+    Fold 5: Acc=0.7130
+    Overall Acc: 0.7140
+
+  Stage 2: Rust vs Other
+    Fold 1: Acc=0.9487
+    Fold 2: Acc=0.9221
+    Fold 3: Acc=0.9221
+    Fold 4: Acc=0.9091
+    Fold 5: Acc=0.9351
+    Overall Acc: 0.9275
+
+  Computing OOF predictions...
+
+  Stage 1: Health vs Rest
+    Fold 1: Acc=0.7312
+    Fold 2: Acc=0.7065
+    Fold 3: Acc=0.7283
+    Fold 4: Acc=0.6848
+    Fold 5: Acc=0.7609
+    Overall Acc: 0.7223
+
+  Stage 2: Rust vs Other
+    Fold 1: Acc=0.9194
+    Fold 2: Acc=0.9355
+    Fold 3: Acc=0.9677
+    Fold 4: Acc=0.8871
+    Fold 5: Acc=0.9344
+    Overall Acc: 0.9288
+
+  Stage 1: Health vs Rest
+    Fold 1: Acc=0.6667
+    Fold 2: Acc=0.6957
+    Fold 3: Acc=0.6522
+    Fold 4: Acc=0.6957
+    Fold 5: Acc=0.7174
+    Overall Acc: 0.6855
+
+  Stage 2: Rust vs Other
+    Fold 1: Acc=0.9355
+    Fold 2: Acc=0.8871
+    Fold 3: Acc=0.9194
+    Fold 4: Acc=0.9180
+    Fold 5: Acc=0.9344
+    Overall Acc: 0.9188
+
+  Stage 1: Health vs Rest
+    Fold 1: Acc=0.6774
+    Fold 2: Acc=0.6774
+    Fold 3: Acc=0.7391
+    Fold 4: Acc=0.7391
+    Fold 5: Acc=0.7065
+    Overall Acc: 0.7078
+
+  Stage 2: Rust vs Other
+    Fold 1: Acc=0.9355
+    Fold 2: Acc=0.9194
+    Fold 3: Acc=0.9516
+    Fold 4: Acc=0.8871
+    Fold 5: Acc=0.9508
+    Overall Acc: 0.9288
+
+  Stage 1: Health vs Rest
+    Fold 1: Acc=0.6559
+    Fold 2: Acc=0.7419
+    Fold 3: Acc=0.6848
+    Fold 4: Acc=0.6848
+    Fold 5: Acc=0.7500
+    Overall Acc: 0.7035
+
+  Stage 2: Rust vs Other
+    Fold 1: Acc=0.9032
+    Fold 2: Acc=0.9032
+    Fold 3: Acc=0.9355
+    Fold 4: Acc=0.9516
+    Fold 5: Acc=0.9180
+    Overall Acc: 0.9223
+
+  Stage 1: Health vs Rest
+    Fold 1: Acc=0.7204
+    Fold 2: Acc=0.7312
+    Fold 3: Acc=0.7065
+    Fold 4: Acc=0.7717
+    Fold 5: Acc=0.7283
+    Overall Acc: 0.7316
+
+  Stage 2: Rust vs Other
+    Fold 1: Acc=0.9355
+    Fold 2: Acc=0.9516
+    Fold 3: Acc=0.9516
+    Fold 4: Acc=0.9677
+    Fold 5: Acc=0.8525
+    Overall Acc: 0.9320
+
+Two-Stage OOF Accuracy: 0.6950, F1: 0.6853
+              precision    recall  f1-score   support
+
+      Health     0.6056    0.4503    0.5165       191
+        Rust     0.6752    0.7900    0.7281       200
+       Other     0.7811    0.8441    0.8114       186
+
+    accuracy                         0.6950       577
+   macro avg     0.6873    0.6948    0.6853       577
+weighted avg     0.6863    0.6950    0.6849       577
+
+
+======================================================================
+STEP 5: Standard XGBoost (for comparison)
+======================================================================
+  Fold 1: Acc=0.6983
+  Fold 2: Acc=0.7241
+  Fold 3: Acc=0.7478
+  Fold 4: Acc=0.6870
+  Fold 5: Acc=0.7043
+
+XGB OOF Accuracy: 0.7123, F1: 0.7082
+              precision    recall  f1-score   support
+
+      Health     0.6000    0.5183    0.5562       191
+        Rust     0.7085    0.7900    0.7470       200
+       Other     0.8148    0.8280    0.8213       186
+
+    accuracy                         0.7123       577
+   macro avg     0.7078    0.7121    0.7082       577
+weighted avg     0.7069    0.7123    0.7078       577
+
+
+Top 20 features:
+   1. spec_nir_vis_ratio                       imp=0.0518
+   2. vi_GNDVI_mean                            imp=0.0491
+   3. hs_CI_Green                              imp=0.0323
+   4. hs_HealthRatio                           imp=0.0323
+   5. vi_SAVI_mean                             imp=0.0260
+   6. vi_NDRE_mean                             imp=0.0246
+   7. vi_GNDVI_p10                             imp=0.0221
+   8. hs_nir_vis_ratio                         imp=0.0221
+   9. vi_CI_Green_mean                         imp=0.0202
+  10. vi_NDVI_mean                             imp=0.0199
+  11. band_Red_min                             imp=0.0163
+  12. vi_CI_Green_max                          imp=0.0161
+  13. hs_spectral_skew                         imp=0.0149
+  14. hs_GNDVI                                 imp=0.0147
+  15. band_Blue_min                            imp=0.0141
+  16. hs_NDVI                                  imp=0.0113
+  17. hs_ratio_Green_Red                       imp=0.0111
+  18. vi_NDRE_p10                              imp=0.0111
+  19. vi_CI_RE_mean                            imp=0.0110
+  20. vi_SAVI_p10                              imp=0.0105
+
+======================================================================
+STEP 6: Ensemble (Two-Stage + XGB)
+======================================================================
+Ensemble OOF Accuracy: 0.7123, F1: 0.7072
+              precision    recall  f1-score   support
+
+      Health     0.6087    0.5131    0.5568       191
+        Rust     0.7098    0.7950    0.7500       200
+       Other     0.8021    0.8280    0.8148       186
+
+    accuracy                         0.7123       577
+   macro avg     0.7069    0.7120    0.7072       577
+weighted avg     0.7061    0.7123    0.7069       577
+
+
+Val prediction distribution: {'Health': 75, 'Rust': 124, 'Other': 101}
+
+======================================================================
+STEP 7: Saving Results
+======================================================================
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+Features: 140
+
+Two-Stage OOF: 0.6950, F1: 0.6853
+XGB OOF:       0.7123, F1: 0.7082
+Ensemble OOF:  0.7123, F1: 0.7072
+
+Submission: acfnet_v3_output/submission.csv
+Val distribution: {'Health': 75, 'Rust': 124, 'Other': 101}
+
+Done!

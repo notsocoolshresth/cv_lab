@@ -1,0 +1,20 @@
+Device: mps
+Loaded 577 training samples (skipped 23 black images)
+  Health: 191
+  Rust: 200
+  Other: 186
+Computing per-band statistics...
+Band means: [ 429.23663  791.2594   827.1002  2271.422   2801.116  ]
+Band stds:  [ 375.65994  452.2689   658.6807   753.11804 1010.22736]
+
+============================================================
+FOLD 1/5
+============================================================
+  Health: train=152, val=39
+  Rust: train=160, val=40
+  Other: train=149, val=37
+  Ep   1 | TrL: 1.1004 TrA: 0.3384 | VL: 1.1278 VA: 0.3103 F1: 0.1751 | R: Health:0.897 | Rust:0.000 | Other:0.027 | Best F1: 0.1751 (ep 1)
+  Ep   2 | TrL: 1.0900 TrA: 0.3688 | VL: 1.1422 VA: 0.3190 F1: 0.2000 | R: Health:0.872 | Rust:0.000 | Other:0.081 | Best F1: 0.2000 (ep 2)
+  Ep   3 | TrL: 1.0782 TrA: 0.3579 | VL: 1.1332 VA: 0.3362 F1: 0.2081 | R: Health:0.923 | Rust:0.000 | Other:0.081 | Best F1: 0.2081 (ep 3)
+  Ep   4 | TrL: 1.0749 TrA: 0.3666 | VL: 1.1388 VA: 0.3276 F1: 0.2037 | R: Health:0.897 | Rust:0.000 | Other:0.081 | Best F1: 0.2081 (ep 3)
+  Ep   5 | TrL: 1.0744 TrA: 0.3688 | VL: 1.1189 VA: 0.3362 F1: 0.2178 | R: Health:0.897 | Rust:0.000 | Other:0.108 | Best F1: 0.2178 (ep 5)

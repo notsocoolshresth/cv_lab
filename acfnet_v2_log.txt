@@ -1,0 +1,146 @@
+======================================================================
+STEP 1: Loading and preprocessing data
+======================================================================
+
+Processing training set...
+  Processing 1/600...
+  Processing 50/600...
+  Processing 100/600...
+  Processing 150/600...
+  Processing 200/600...
+  Processing 250/600...
+  Processing 300/600...
+  Processing 350/600...
+  Processing 400/600...
+  Processing 450/600...
+  Processing 500/600...
+  Processing 550/600...
+  Processing 600/600...
+  Skipped 23 black images
+
+Processing validation set...
+  Processing 1/300...
+  Processing 50/300...
+  Processing 100/300...
+  Processing 150/300...
+  Processing 200/300...
+  Processing 250/300...
+  Processing 300/300...
+
+======================================================================
+STEP 2: Preparing features
+======================================================================
+Feature count: 140
+  Health: 191
+  Rust: 200
+  Other: 186
+  Val: 300 samples (11 black)
+
+======================================================================
+STEP 3: Feature selection and scaling
+======================================================================
+Selected 140 features
+PCA variance explained: 0.9654
+Final feature count: 155
+
+======================================================================
+STEP 4: XGBoost Training
+======================================================================
+  Fold 1: Acc=0.6810
+  Fold 2: Acc=0.7069
+  Fold 3: Acc=0.7217
+  Fold 4: Acc=0.6783
+  Fold 5: Acc=0.6435
+
+XGB OOF Accuracy: 0.6863, F1: 0.6840
+              precision    recall  f1-score   support
+
+      Health     0.5640    0.5079    0.5344       191
+        Rust     0.6791    0.7300    0.7036       200
+       Other     0.8053    0.8226    0.8138       186
+
+    accuracy                         0.6863       577
+   macro avg     0.6828    0.6868    0.6840       577
+weighted avg     0.6816    0.6863    0.6831       577
+
+
+Top 20 features:
+   1. vi_SAVI_p10                              imp=0.0667
+   2. vi_NDVI_p10                              imp=0.0518
+   3. vi_GNDVI_mean                            imp=0.0452
+   4. vi_GNDVI_p10                             imp=0.0367
+   5. vi_CI_Green_mean                         imp=0.0323
+   6. vi_NDRE_mean                             imp=0.0266
+   7. spec_nir_vis_ratio                       imp=0.0212
+   8. hs_CI_Green                              imp=0.0185
+   9. hs_HealthRatio                           imp=0.0174
+  10. band_Blue_p5                             imp=0.0172
+  11. vi_NDVI_mean                             imp=0.0170
+  12. hs_chl_absorption_depth                  imp=0.0151
+  13. hs_spectral_skew                         imp=0.0123
+  14. vi_CI_RedEdge_mean                       imp=0.0115
+  15. hs_ratio_NIR_Red                         imp=0.0097
+  16. band_Blue_p95                            imp=0.0096
+  17. disease_YellowIndex_mean                 imp=0.0092
+  18. hs_CI_RE                                 imp=0.0088
+  19. spec_slope_red_re                        imp=0.0085
+  20. hs_ARI                                   imp=0.0083
+
+======================================================================
+STEP 5: LightGBM Training
+======================================================================
+  Fold 1: Acc=0.7241
+  Fold 2: Acc=0.7069
+  Fold 3: Acc=0.7478
+  Fold 4: Acc=0.6348
+  Fold 5: Acc=0.6435
+
+LGB OOF Accuracy: 0.6915, F1: 0.6887
+              precision    recall  f1-score   support
+
+      Health     0.5774    0.5079    0.5404       191
+        Rust     0.6786    0.7600    0.7170       200
+       Other     0.8108    0.8065    0.8086       186
+
+    accuracy                         0.6915       577
+   macro avg     0.6889    0.6914    0.6887       577
+weighted avg     0.6877    0.6915    0.6881       577
+
+
+======================================================================
+STEP 6: Ensemble
+======================================================================
+Ensemble OOF Accuracy: 0.6950, F1: 0.6912
+              precision    recall  f1-score   support
+
+      Health     0.5758    0.4974    0.5337       191
+        Rust     0.6830    0.7650    0.7217       200
+       Other     0.8138    0.8226    0.8182       186
+
+    accuracy                         0.6950       577
+   macro avg     0.6909    0.6950    0.6912       577
+weighted avg     0.6897    0.6950    0.6906       577
+
+
+Val prediction distribution: {'Health': 83, 'Rust': 122, 'Other': 95}
+
+======================================================================
+STEP 7: Saving Results
+======================================================================
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+Original features:    140
+Selected features:    140
++ PCA components:     15
+= Total:              155
+
+XGB OOF Accuracy:     0.6863, F1: 0.6840
+LGB OOF Accuracy:     0.6915, F1: 0.6887
+Ensemble OOF Acc:     0.6950, F1: 0.6912
+
+Submission saved to:  acfnet_v2_output/submission.csv
+Val distribution:     {'Health': 83, 'Rust': 122, 'Other': 95}
+
+Done!

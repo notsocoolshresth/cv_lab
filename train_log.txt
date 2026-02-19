@@ -1,0 +1,68 @@
+Device: mps
+Loaded 577 training samples (skipped 23 black images)
+Class distribution: {np.int64(0): np.int64(191), np.int64(1): np.int64(200), np.int64(2): np.int64(186)}
+Computing per-band statistics...
+Band means: [ 429.23663  791.2594   827.1002  2271.422   2801.116  ]
+Band stds:  [ 375.65994  452.2689   658.6807   753.11804 1010.22736]
+
+============================================================
+FOLD 1/5
+============================================================
+  Epoch   1 | Train Loss: 1.1096 Acc: 0.3080 | Val Loss: 1.1162 Acc: 0.3621 | Best: 0.3621 (ep 1)
+  Epoch   3 | Train Loss: 1.0972 Acc: 0.3623 | Val Loss: 1.2144 Acc: 0.3621 | Best: 0.3621 (ep 1)
+  Epoch   6 | Train Loss: 0.9550 Acc: 0.5315 | Val Loss: 0.8998 Acc: 0.5517 | Best: 0.5517 (ep 6)
+  Epoch   7 | Train Loss: 0.8474 Acc: 0.5597 | Val Loss: 0.8264 Acc: 0.5776 | Best: 0.5776 (ep 7)
+  Epoch   8 | Train Loss: 0.8125 Acc: 0.6204 | Val Loss: 0.7984 Acc: 0.5948 | Best: 0.5948 (ep 8)
+  Epoch   9 | Train Loss: 0.8108 Acc: 0.6117 | Val Loss: 0.7988 Acc: 0.6207 | Best: 0.6207 (ep 9)
+  Epoch  10 | Train Loss: 0.8540 Acc: 0.5662 | Val Loss: 0.8313 Acc: 0.5776 | Best: 0.6207 (ep 9)
+  Epoch  11 | Train Loss: 0.8358 Acc: 0.5770 | Val Loss: 0.7981 Acc: 0.6207 | Best: 0.6207 (ep 9)
+  Epoch  15 | Train Loss: 0.7998 Acc: 0.6334 | Val Loss: 0.7889 Acc: 0.6293 | Best: 0.6293 (ep 15)
+  Epoch  20 | Train Loss: 0.7897 Acc: 0.6226 | Val Loss: 0.8188 Acc: 0.5948 | Best: 0.6293 (ep 15)
+  Epoch  30 | Train Loss: 0.7918 Acc: 0.6009 | Val Loss: 0.8526 Acc: 0.5862 | Best: 0.6293 (ep 15)
+  Early stopping at epoch 30
+
+  Fold 1 Best Acc: 0.6293 (epoch 15)
+              precision    recall  f1-score   support
+
+      Health     0.6667    0.1026    0.1778        39
+        Rust     0.5342    0.9750    0.6903        40
+       Other     0.8108    0.8108    0.8108        37
+
+    accuracy                         0.6293       116
+   macro avg     0.6706    0.6295    0.5596       116
+weighted avg     0.6670    0.6293    0.5564       116
+
+
+============================================================
+FOLD 2/5
+============================================================
+  Epoch   1 | Train Loss: 1.1102 Acc: 0.3709 | Val Loss: 1.0999 Acc: 0.3707 | Best: 0.3707 (ep 1)
+  Epoch   6 | Train Loss: 1.0209 Acc: 0.5119 | Val Loss: 0.9263 Acc: 0.5690 | Best: 0.5690 (ep 6)
+  Epoch   8 | Train Loss: 0.8453 Acc: 0.6009 | Val Loss: 0.8080 Acc: 0.5948 | Best: 0.5948 (ep 8)
+  Epoch   9 | Train Loss: 0.8580 Acc: 0.5575 | Val Loss: 0.8132 Acc: 0.5948 | Best: 0.5948 (ep 8)
+  Epoch  10 | Train Loss: 0.8346 Acc: 0.5965 | Val Loss: 0.7785 Acc: 0.6121 | Best: 0.6121 (ep 10)
+  Epoch  16 | Train Loss: 0.8151 Acc: 0.6095 | Val Loss: 0.7816 Acc: 0.6207 | Best: 0.6207 (ep 16)
+  Epoch  19 | Train Loss: 0.8080 Acc: 0.6161 | Val Loss: 0.7904 Acc: 0.6207 | Best: 0.6207 (ep 16)
+  Epoch  20 | Train Loss: 0.8266 Acc: 0.5944 | Val Loss: 0.8025 Acc: 0.6034 | Best: 0.6207 (ep 16)
+  Epoch  22 | Train Loss: 0.7953 Acc: 0.6204 | Val Loss: 0.7657 Acc: 0.6207 | Best: 0.6207 (ep 16)
+  Epoch  28 | Train Loss: 0.7955 Acc: 0.5987 | Val Loss: 0.8099 Acc: 0.6379 | Best: 0.6379 (ep 28)
+  Epoch  30 | Train Loss: 0.7843 Acc: 0.6052 | Val Loss: 0.8212 Acc: 0.5603 | Best: 0.6379 (ep 28)
+  Epoch  40 | Train Loss: 0.7839 Acc: 0.6291 | Val Loss: 0.8446 Acc: 0.5948 | Best: 0.6379 (ep 28)
+  Early stopping at epoch 43
+
+  Fold 2 Best Acc: 0.6379 (epoch 28)
+              precision    recall  f1-score   support
+
+      Health     1.0000    0.0526    0.1000        38
+        Rust     0.5405    1.0000    0.7018        40
+       Other     0.8000    0.8421    0.8205        38
+
+    accuracy                         0.6379       116
+   macro avg     0.7802    0.6316    0.5408       116
+weighted avg     0.7760    0.6379    0.5435       116
+
+
+============================================================
+FOLD 3/5
+============================================================
+  Epoch   1 | Train Loss: 1.1113 Acc: 0.3398 | Val Loss: 1.0952 Acc: 0.4174 | Best: 0.4174 (ep 1)

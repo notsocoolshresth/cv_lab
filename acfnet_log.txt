@@ -1,0 +1,181 @@
+Device: mps
+======================================================================
+STEP 1: Loading and preprocessing data
+======================================================================
+
+Processing training set...
+  Processing 1/600...
+  Processing 20/600...
+  Processing 40/600...
+  Processing 60/600...
+  Processing 80/600...
+  Processing 100/600...
+  Processing 120/600...
+  Processing 140/600...
+  Processing 160/600...
+  Processing 180/600...
+  Processing 200/600...
+  Processing 220/600...
+  Processing 240/600...
+  Processing 260/600...
+  Processing 280/600...
+  Processing 300/600...
+  Processing 320/600...
+  Processing 340/600...
+  Processing 360/600...
+  Processing 380/600...
+  Processing 400/600...
+  Processing 420/600...
+  Processing 440/600...
+  Processing 460/600...
+  Processing 480/600...
+  Processing 500/600...
+  Processing 520/600...
+  Processing 540/600...
+  Processing 560/600...
+  Processing 580/600...
+  Processing 600/600...
+  Skipped 23 black images
+
+Processing validation set...
+  Processing 1/300...
+  Processing 20/300...
+  Processing 40/300...
+  Processing 60/300...
+  Processing 80/300...
+  Processing 100/300...
+  Processing 120/300...
+  Processing 140/300...
+  Processing 160/300...
+  Processing 180/300...
+  Processing 200/300...
+  Processing 220/300...
+  Processing 240/300...
+  Processing 260/300...
+  Processing 280/300...
+  Processing 300/300...
+
+======================================================================
+STEP 2: Preparing handcrafted features
+======================================================================
+Feature count: 180
+  Health: 191
+  Rust: 200
+  Other: 186
+  Val: 300 samples (11 black)
+
+  Applying PCA for dimensionality reduction...
+  PCA variance explained: 0.9215
+
+======================================================================
+STEP 3: Training AC-FNet CNN
+======================================================================
+  CNN disabled (handcrafted features only mode)
+
+======================================================================
+STEP 4: Feature Fusion + Gradient Boosting
+======================================================================
+Fused feature count: 195
+
+--- XGBoost 5-Fold CV ---
+  Fold 1: Acc=0.7069
+  Fold 2: Acc=0.7500
+  Fold 3: Acc=0.6870
+  Fold 4: Acc=0.6870
+  Fold 5: Acc=0.6957
+
+XGB OOF Accuracy: 0.7054, F1: 0.7004
+              precision    recall  f1-score   support
+
+      Health     0.6115    0.5026    0.5517       191
+        Rust     0.6812    0.7800    0.7273       200
+       Other     0.8115    0.8333    0.8223       186
+
+    accuracy                         0.7054       577
+   macro avg     0.7014    0.7053    0.7004       577
+weighted avg     0.7001    0.7054    0.6998       577
+
+
+Top 25 features:
+   1. vi_SAVI_mean                        imp=0.1928
+   2. vi_GNDVI_mean                       imp=0.0443
+   3. spec_nir_vis_ratio                  imp=0.0424
+   4. hs_CI_Green                         imp=0.0346
+   5. vi_EVI_p10                          imp=0.0285
+   6. vi_CLgreen_mean                     imp=0.0283
+   7. vi_SAVI_p10                         imp=0.0264
+   8. vi_NDRE_p10                         imp=0.0203
+   9. hs_GNDVI                            imp=0.0142
+  10. hs_CI_RE                            imp=0.0138
+  11. band_Blue_p5                        imp=0.0132
+  12. hs_NDRE                             imp=0.0132
+  13. vi_NDRE_p90                         imp=0.0110
+  14. vi_NDRE_mean                        imp=0.0105
+  15. vi_NDVI_mean                        imp=0.0086
+  16. hs_cr_depth                         imp=0.0075
+  17. band_Red_std                        imp=0.0068
+  18. vi_CIrededge_mean                   imp=0.0067
+  19. band_Blue_p95                       imp=0.0066
+  20. spec_slope_nir                      imp=0.0064
+  21. hs_cr_area                          imp=0.0063
+  22. band_Blue_median                    imp=0.0061
+  23. hs_NDVI                             imp=0.0059
+  24. vi_CVI_mean                         imp=0.0058
+  25. band_Blue_mean                      imp=0.0057
+
+--- LightGBM 5-Fold CV ---
+  Fold 1: Acc=0.6724
+  Fold 2: Acc=0.7672
+  Fold 3: Acc=0.7217
+  Fold 4: Acc=0.6957
+  Fold 5: Acc=0.6957
+
+LGB OOF Accuracy: 0.7106, F1: 0.7059
+              precision    recall  f1-score   support
+
+      Health     0.6226    0.5183    0.5657       191
+        Rust     0.6933    0.7800    0.7341       200
+       Other     0.8031    0.8333    0.8179       186
+
+    accuracy                         0.7106       577
+   macro avg     0.7064    0.7106    0.7059       577
+weighted avg     0.7053    0.7106    0.7054       577
+
+
+======================================================================
+STEP 5: Ensemble (XGB + LGB + CNN)
+======================================================================
+Ensemble OOF Accuracy: 0.7054, F1: 0.7021
+              precision    recall  f1-score   support
+
+      Health     0.6135    0.5236    0.5650       191
+        Rust     0.6814    0.7700    0.7230       200
+       Other     0.8138    0.8226    0.8182       186
+
+    accuracy                         0.7054       577
+   macro avg     0.7029    0.7054    0.7021       577
+weighted avg     0.7016    0.7054    0.7014       577
+
+
+Val prediction distribution: {'Health': 79, 'Rust': 120, 'Other': 101}
+
+======================================================================
+STEP 6: Saving Results
+======================================================================
+
+======================================================================
+FINAL SUMMARY
+======================================================================
+Handcrafted features: 180
++ PCA components:     15
+= Total fused:        195
+
+XGB OOF Accuracy:     0.7054, F1: 0.7004
+LGB OOF Accuracy:     0.7106, F1: 0.7059
+Ensemble OOF Acc:     0.7054, F1: 0.7021
+
+Submission saved to:  acfnet_output/submission.csv
+Val probs saved to:   acfnet_output/val_probs_final.npy
+Val distribution:     {'Health': 79, 'Rust': 120, 'Other': 101}
+
+Done!

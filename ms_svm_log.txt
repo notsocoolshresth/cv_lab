@@ -1,0 +1,100 @@
+Extracting training features...
+  Skipped/flagged 23 black images
+  577 samples, 224 features each
+  Health: 191
+  Rust: 200
+  Other: 186
+Extracting validation features...
+  Skipped/flagged 11 black images
+  300 samples (11 black)
+Preprocessing backend preference: torch-mps
+
+============================================================
+SVM-RBF 5-Fold CV
+============================================================
+
+--- Fold 1 ---
+  Scaling backend: torch-mps
+  Acc=0.7414 F1=0.7376 | Health:0.513 Rust:0.850 Other:0.865
+
+--- Fold 2 ---
+  Acc=0.7500 F1=0.7380 | Health:0.474 Rust:0.900 Other:0.868
+
+--- Fold 3 ---
+  Acc=0.7304 F1=0.7214 | Health:0.500 Rust:0.825 Other:0.865
+
+--- Fold 4 ---
+  Acc=0.6522 F1=0.6563 | Health:0.579 Rust:0.550 Other:0.838
+
+--- Fold 5 ---
+  Acc=0.6696 F1=0.6650 | Health:0.447 Rust:0.775 Other:0.784
+
+SVM-RBF CV SUMMARY
+OOF Accuracy: 0.7088
+OOF Macro F1: 0.7047
+              precision    recall  f1-score   support
+
+      Health     0.6115    0.5026    0.5517       191
+        Rust     0.6695    0.7800    0.7206       200
+       Other     0.8396    0.8441    0.8418       186
+
+    accuracy                         0.7088       577
+   macro avg     0.7069    0.7089    0.7047       577
+weighted avg     0.7051    0.7088    0.7038       577
+
+
+============================================================
+SVM-RBF-ALT 5-Fold CV
+============================================================
+
+--- Fold 1 ---
+  Scaling backend: torch-mps
+  Acc=0.7328 F1=0.7295 | Health:0.513 Rust:0.850 Other:0.838
+
+--- Fold 2 ---
+  Acc=0.7328 F1=0.7220 | Health:0.474 Rust:0.900 Other:0.816
+
+--- Fold 3 ---
+  Acc=0.7217 F1=0.7127 | Health:0.474 Rust:0.800 Other:0.892
+
+--- Fold 4 ---
+  Acc=0.6696 F1=0.6714 | Health:0.526 Rust:0.650 Other:0.838
+
+--- Fold 5 ---
+  Acc=0.6609 F1=0.6539 | Health:0.421 Rust:0.800 Other:0.757
+
+SVM-RBF-ALT CV SUMMARY
+OOF Accuracy: 0.7036
+OOF Macro F1: 0.6985
+              precision    recall  f1-score   support
+
+      Health     0.6133    0.4817    0.5396       191
+        Rust     0.6531    0.8000    0.7191       200
+       Other     0.8462    0.8280    0.8370       186
+
+    accuracy                         0.7036       577
+   macro avg     0.7042    0.7032    0.6985       577
+weighted avg     0.7022    0.7036    0.6977       577
+
+
+============================================================
+SVM Ensemble (RBF + RBF-ALT)
+============================================================
+Ensemble OOF Acc: 0.7071, F1: 0.7031
+              precision    recall  f1-score   support
+
+      Health     0.6115    0.5026    0.5517       191
+        Rust     0.6681    0.7950    0.7260       200
+       Other     0.8407    0.8226    0.8315       186
+
+    accuracy                         0.7071       577
+   macro avg     0.7067    0.7067    0.7031       577
+weighted avg     0.7050    0.7071    0.7023       577
+
+
+Best model for submission: svm_rbf (OOF Acc=0.7088, F1=0.7047)
+
+Val prediction distribution: {'Health': 96, 'Rust': 105, 'Other': 99}
+
+Saved outputs to: ms_svm/
+Done!
