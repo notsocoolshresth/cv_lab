@@ -3,3 +3,7 @@ Shresth/__pycache__
 *.csv
 /logs
 .vscode
+
+# Large model checkpoints (exceed GitHub 100MB limit)
+Shresth/checkpoints/best_model.pth
+Shresth/checkpoints/best_vit_model.pth
