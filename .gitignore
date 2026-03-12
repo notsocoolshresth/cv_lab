@@ -1,0 +1,5 @@
+Shresth/Kaggle_prepared
+Shresth/__pycache__
+*.csv
+/logs
+.vscode
